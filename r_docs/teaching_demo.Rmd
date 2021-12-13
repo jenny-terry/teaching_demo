@@ -1,0 +1,41 @@
+---
+title: "teaching_demo"
+author: "Jenny Terry"
+date: "13/12/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(magrittr)
+```
+
+Run the code chunk below to load in your data.
+
+```{r}
+dep_data <- readr::read_csv("https://jennyterry.github.io/teaching_demo/xmas_data.csv")
+```
+
+
+
+```{r}
+xmas_data
+```
+
+
+```{r}
+whisky_lm <- lm(houses ~ whisky, data = xmas_data)
+
+summary(whisky_lm)
+broom::glance(mincepies_lm)
+broom::tidy(mincepies_lm, conf.int = TRUE)
+```
+```{r}
+mincepies_lm <- lm(houses ~ mincepies, data = xmas_data)
+
+summary(mincepies_lm)
+broom::glance(mincepies_lm)
+broom::tidy(mincepies_lm, conf.int = TRUE)
+```
+

@@ -1,0 +1,23 @@
+---
+title: "data_sim"
+author: "Jenny Terry"
+date: "13/12/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(faux)
+```
+
+```{r}
+xmas_data <- sim_design(within = list(vars = c("houses", "whisky", "mincepies")),
+                mu = list(houses = 6100, whisky = 20, mincepies = 40),
+                sd = list(houses = 61, whisky = 2, mincepies = 4),
+                r = c(-0.5, 0.1, 0.8), plot = F)
+```
+
+```{r}
+readr::write_csv(xmas_data, here::here("data", "xmas_data.csv"), col_names = T)
+```
